@@ -1,0 +1,42 @@
+body{
+    background-color: lightcyan;
+}h1 {
+     color: crimson;
+     text-align: center;
+ }
+ p{
+     color: darkblue;
+     font-style: italic;
+     font-family: Arial;
+     font-size: larger;
+     text-align: center;
+ }
+body{
+    background-color: lightcyan;
+}h1{
+     color: crimson;
+ }
+
+h2{
+    color: saddlebrown;
+}
+
+.center {
+  display: block;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table{
+    display: table;
+    margin-right: 100px ;
+    margin-left: 280px;
+}
+tr{
+    color: black;
+    background-color: greenyellow;
+    font-style: italic;
+    font-family: "Comic Sans MS";
+
+}

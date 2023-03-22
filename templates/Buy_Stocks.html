@@ -1,0 +1,51 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'Style.css' %}">
+<h1>Welcome the Cohen and Bryt and co. Stocks service website</h1><br>
+<a href="Home">Home</a><br>
+<a href="Query_Results">Query Results</a><br>
+<a href="Add_Transaction">Add a transaction</a><br>
+
+
+<form method="POST" style = "text-align: center">
+        {% csrf_token %}
+        ID: <input type="Number" rows="1" cols="9" name="id" minlength="9"> <br>
+        Company: <input type="Text" rows="1" cols="50" name="symbol"> <br>
+        Quantity: <input type="Number" rows="1" cols="50" name="quantity" min="1" step="1"> <br>
+        <button type="submit" name="submit" value="Send"> Submit </button>
+</form>
+<br>
+{% if fail1 == 1  %}
+    Investor Does not exist.
+{% endif%}
+<br>
+{% if fail2 == 1  %}
+    company Does not exist.
+{% endif%}
+<br>
+{% if fail3 == 1  %}
+    Investor cannot complete the purchase, lack of funds.
+{% endif%}
+<br>
+{% if fail4 == 1  %}
+    Investor cannot complete the purchase, a purchase is already pending.
+{% endif%}
+<br>
+
+
+<h1>Top 10 Purchases</h1>
+<br>
+<table border ="1" width="40%">
+    <th>Date</th>
+    <th>Investor ID</th>
+    <th>Company</th>
+    <th>Payed</th>
+    {% for purchase in sql_res5 %}
+        <tr>
+            <td>{{ purchase.tdate }} </td>
+            <td>{{ purchase.id }} </td>
+            <td>{{ purchase.Symbol }} </td>
+            <td>{{ purchase.sum_total }} </td>
+        </tr>
+    {% endfor %}
+</table>
+<br>

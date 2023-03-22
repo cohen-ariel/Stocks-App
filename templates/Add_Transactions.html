@@ -1,0 +1,37 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'Style.css' %}">
+<h1>Welcome the Cohen and Bryt and co. Stocks service website</h1><br>
+{% load static %}
+<img  src="{% static "stocks.jpg" %}" alt = "stocks" class="center" /><br>
+
+<form method="POST" style = "text-align: center">
+        {% csrf_token %}
+        Id: <input type="Number" rows="1" cols="9" name="id" minlength="9"> <br>
+        Transaction: <input type="Number" rows="1" cols="50" name="transaction" min="0"> <br>
+        <button type="submit" name="submit" value="Send"> Submit </button>
+</form>
+<br>
+{% if sql_res3  %}
+{% else %}
+    Investor Does not exist.
+{% endif%}
+<br>
+<br>
+<h1>Recent Transactions</h1>
+<br>
+<table border ="1" width="40%">
+    <th>Date</th>
+    <th>Investor ID</th>
+    <th>Transaction Sum</th>
+    {% for transaction in sql_res1 %}
+        <tr>
+            <td>{{ transaction.tDate }} </td>
+            <td>{{ transaction.ID }} </td>
+            <td>{{ transaction.TQuantity }} </td>
+        </tr>
+    {% endfor %}
+</table>
+
+<a href="Home">Home</a><br>
+<a href="Query_Results">Query Results</a><br>
+<a href="Buy_Stocks">Buy Stocks</a><br>

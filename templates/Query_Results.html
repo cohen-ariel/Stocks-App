@@ -1,0 +1,49 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'Style.css' %}">
+<h1>Welcome the Cohen and Bryt and co. Stocks service website</h1><br>
+<a href="Home">Home</a><br>
+<a href="Add_Transaction">Add a transaction</a><br>
+<a href="Buy_Stocks">Buy Stocks</a><br>
+<br>
+<h1>Query 1</h1>
+<br>
+<table border ="1" width="40%">
+    <th>Name</th>
+    <th>Total Sum</th>
+    {% for investor in sql_res1 %}
+        <tr>
+            <td>{{ investor.Name }} </td>
+            <td>{{ investor.total_sum }} </td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+<h1>Query 2</h1>
+<br>
+<table border ="1" width="40%">
+    <th>Symbol</th>
+    <th>Name</th>
+    <th>Quantity</th>
+    {% for tuple in sql_res2 %}
+        <tr>
+            <td>{{ tuple.symbol }} </td>
+            <td>{{ tuple.name }} </td>
+            <td>{{ tuple.total_quantity }} </td>
+        </tr>
+    {% endfor %}
+</table>
+<br>
+<h1>Query 3</h1>
+<br>
+<table border ="1" width="40%">
+    <th>Date</th>
+    <th>Symbol</th>
+    <th>Name</th>
+    {% for tuple in sql_res4 %}
+        <tr>
+            <td>{{ tuple.tDate }} </td>
+            <td>{{ tuple.symbol }} </td>
+            <td>{{ tuple.Name }} </td>
+        </tr>
+    {% endfor %}
+</table>
